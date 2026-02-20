@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════════
+   Homepedia Design System — Global Styles (P0.3)
+   
+   品牌色、字体、阴影等视觉 token 全部在此定义。
+   所有组件通过 CSS 变量或 Tailwind 工具类引用这些值。
+   ════════════════════════════════════════════════════════════ */
+
+/* ── CSS Variables ──────────────────────────────────────────── */
+
+:root {
+  /* 品牌色 */
+  --brand-deep-blue: #004aad;
+  --brand-cyan: #5de0e6;
+  --brand-gold: #ffbd59;
+  --brand-warm-white: #f8f8f3;
+  --brand-white: #ffffff;
+
+  /* 品牌渐变 */
+  --gradient-brand: linear-gradient(135deg, #5de0e6 0%, #004aad 100%);
+
+  /* 语义色 */
+  --color-background: var(--brand-warm-white);
+  --color-foreground: var(--brand-deep-blue);
+  --color-card: var(--brand-white);
+}
+
+/* ── Tailwind 4 Theme Configuration ────────────────────────── */
+
+@theme inline {
+  /* Colors — 品牌色系 */
+  --color-brand-blue: #004aad;
+  --color-brand-cyan: #5de0e6;
+  --color-brand-gold: #ffbd59;
+  --color-brand-gold-hover: #ffaa2b;
+  --color-warm-white: #f8f8f3;
+
+  /* Fonts — Montserrat 标题, Outfit 正文, 中文回退 system-ui */
+  --font-heading: var(--font-montserrat), system-ui, sans-serif;
+  --font-sans: var(--font-outfit), system-ui, sans-serif;
+
+  /* Shadows — 品牌色色调阴影（不使用纯灰阴影） */
+  --shadow-card: 0 1px 2px 0 rgba(0, 74, 173, 0.03);
+  --shadow-card-hover: 0 20px 25px -5px rgba(0, 74, 173, 0.08), 0 8px 10px -6px rgba(0, 74, 173, 0.04);
+  --shadow-elevated: 0 25px 50px -12px rgba(0, 74, 173, 0.12);
+  --shadow-cta: 0 25px 50px -12px rgba(255, 189, 89, 0.30);
+  --shadow-logo: 0 10px 15px -3px rgba(93, 224, 230, 0.20);
+}
+
+/* ── Global Styles ─────────────────────────────────────────── */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* 选中文字高亮 — 淡金背景 */
+::selection {
+  background-color: rgba(255, 189, 89, 0.30);
+}
+
+/* ── Typography Base ───────────────────────────────────────── */
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
+
+/* ── Utility: 禁止纯黑文字 ────────────────────────────────── */
+/* 设计系统规定：不使用纯黑 #000000，用深蓝 #004aad 替代 */
+
+/* ── Smooth scrolling ──────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Focus visible for accessibility ───────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--brand-cyan);
+  outline-offset: 2px;
+}
